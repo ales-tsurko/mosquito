@@ -23,5 +23,5 @@ Additional steps are needed for
 [csound-rs](https://github.com/neithanmo/csound-rs) to build this project, check
 out instructions [here](https://github.com/neithanmo/csound-rs#installation).
 
-More details for installing/building Csound library, you'll find in 
+More details for installing/building Csound library you'll find in 
 [Csound repo](https://github.com/csound/csound).
