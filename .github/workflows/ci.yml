@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install Csound (Ubuntu)
-        if: runner.os == 'Ubuntu'
+        if: runner.os == 'Linux'
         run: apt-get install csound
 
       - name: Install Csound (macOS)
