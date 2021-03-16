@@ -14,8 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # os: [ macOS-latest, ubuntu-latest, windows-latest ]
-        os: [ windows-latest ]
+        os: [ macOS-latest, ubuntu-latest ]
 
     steps:
       - uses: actions/checkout@v2
@@ -23,21 +22,20 @@ jobs:
           submodules: recursive
 
       - name: Install Csound (Ubuntu)
+      - uses: actions/cache@v2
         if: runner.os == 'Linux'
+        with: 
+          path: /usr/lib/libcsound64.so
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('/usr/lib/libcsound64.so') }}
         run: sudo apt-get install libcsound64-dev
 
       - name: Install Csound (macOS)
+      - uses: actions/cache@v2
         if: runner.os == 'macOS'
+        with: 
+          path: /usr/local/Cellar/csound/6.15.0_4/Frameworks/CsoundLib64.framework/CsoundLib64
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('/usr/local/Cellar/csound/6.15.0_4/Frameworks/CsoundLib64.framework/CsoundLib64') }}
         run: brew install csound
-
-      - name: Install Csound (Windows)
-        if: runner.os == 'Windows'
-        run: pacman -Syu csound
-
-      # - name: Install LLVM on Windows
-        # if: runner.os == 'Windows'
-        # run: choco install -y llvm
-        # run: echo "::add-path::C:\\msys64\\mingw64\\bin"
 
       - uses: actions/cache@v2
         with:
@@ -47,7 +45,6 @@ jobs:
             target
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       
-      # - uses: davidB/rust-cargo-make@v1
       - name: Build
         run: cargo build
 
