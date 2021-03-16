@@ -22,21 +22,17 @@ jobs:
           submodules: recursive
 
       - name: Install Csound (Ubuntu)
-        run: sudo apt-get install libcsound64-dev
-
-      - name: Install Csound (macOS)
-        run: brew install csound
-
-      - name: Cache Csound (Ubuntu)
         uses: actions/cache@v2
         if: runner.os == 'Linux'
+        run: sudo apt-get install libcsound64-dev
         with: 
           path: /usr/lib/libcsound64.so
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('/usr/lib/libcsound64.so') }}
 
-      - name: Cache Csound (macOS)
+      - name: Install Csound (macOS)
         uses: actions/cache@v2
         if: runner.os == 'macOS'
+        run: brew install csound
         with: 
           path: /usr/local/Cellar/csound/6.15.0_4/Frameworks/CsoundLib64.framework/CsoundLib64
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('/usr/local/Cellar/csound/6.15.0_4/Frameworks/CsoundLib64.framework/CsoundLib64') }}
