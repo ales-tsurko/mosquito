@@ -29,21 +29,6 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install csound
 
-        # what should we cache here? Is there any specific path to a package?
-      # - name: Cache Csound (Ubuntu)
-        # uses: actions/cache@v2
-        # if: runner.os == 'Linux'
-        # with: 
-          # path: /usr/lib/libcsound64.so
-          # key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('/usr/lib/libcsound64.so') }}
-
-      - name: Cache Csound (macOS)
-        uses: actions/cache@v2
-        if: runner.os == 'macOS'
-        with: 
-          path: /usr/local/Cellar/csound
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('/usr/local/Cellar/csound/6.15.0_4/Frameworks/CsoundLib64.framework/CsoundLib64') }}
-
       - name: Cache Cargo
         uses: actions/cache@v2
         with:
