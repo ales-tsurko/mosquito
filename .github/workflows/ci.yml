@@ -14,10 +14,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ windows-latest, macOS-latest, ubuntu-latest ]
+        os: [ macOS-latest, ubuntu-latest ]
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install Csound (Ubuntu)
+        if: runner.os == 'Ubuntu'
+        run: apt-get install csound
+
+      - name: Install Csound (macOS)
+        if: runner.os == 'macOS'
+        run: brew install csound
+
+      # - name: Install Csound (Windows)
+        # if: runner.os == 'Window'
+        # run: choco install -y csound
 
       # - name: Install LLVM on Windows
         # if: runner.os == 'Windows'
