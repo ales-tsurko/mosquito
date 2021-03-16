@@ -1,0 +1,3 @@
+[submodule "csound-bindgen/csound"]
+	path = csound-bindgen/csound
+	url = https://github.com/csound/csound.git
