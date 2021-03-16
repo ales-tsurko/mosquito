@@ -140,7 +140,7 @@ fn link() -> bool {
         return true;
     }
 
-    let path_str = format!("/Library/Frameworks/{}", framework);
+    let path_str = format!("/usr/local/Cellar/csound/6.15.0_4/Frameworks/{}", framework);
 
     if !Path::new(&path_str).exists() {
         return false;
