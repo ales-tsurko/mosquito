@@ -32,7 +32,7 @@ jobs:
 
       - name: Install Csound (Windows)
         if: runner.os == 'Window'
-        run: pacman -Syu libcsound64-dev
+        run: pacman -Syu csound
 
       # - name: Install LLVM on Windows
         # if: runner.os == 'Windows'
