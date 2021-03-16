@@ -19,9 +19,8 @@ Csound is linked dynamically.
 
 ## Build
 
-Additional steps are needed for 
-[csound-rs](https://github.com/neithanmo/csound-rs) to build this project, check
-out instructions [here](https://github.com/neithanmo/csound-rs#installation).
+**libcsound64** (or **CsoundLib64.framework** on macOS) should be installed in
+your system. If it's not in `PATH`, specify `CSOUND_LIB_DIR`.
 
 More details for installing/building Csound library you'll find in 
 [Csound repo](https://github.com/csound/csound).
