@@ -21,7 +21,7 @@ jobs:
 
       - name: Install Csound (Ubuntu)
         if: runner.os == 'Linux'
-        run: apt-get install csound
+        run: sudo apt-get install csound
 
       - name: Install Csound (macOS)
         if: runner.os == 'macOS'
