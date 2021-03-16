@@ -19,8 +19,14 @@ Csound is linked dynamically.
 
 ## Build
 
-**libcsound64** (or **CsoundLib64.framework** on macOS) should be installed in
-your system. If it's not in `PATH`, specify `CSOUND_LIB_DIR`.
+This repo has submodules, initialize them with:
 
-More details for installing/building Csound library you'll find in 
-[Csound repo](https://github.com/csound/csound).
+```
+git submodule update --init
+```
+
+Also, **libcsound64** (or **CsoundLib64.framework** on macOS) should be
+installed in your system. If it's not in `PATH`, specify `CSOUND_LIB_DIR`.
+
+You'll find more details for installing/building Csound library in 
+[Csound's repo](https://github.com/csound/csound).
