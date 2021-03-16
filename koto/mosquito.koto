@@ -1,0 +1,51 @@
+import koto
+from test import assert_eq
+
+# Rate type enumeration.
+Rate = ("a", "i", "k")
+  .enumerate()
+  .each |(index, id)| id, index
+  .to_map()
+
+make_param = |name, rate, default...|
+  result = { name, rate }
+
+  if default.size() > 0
+    result += { default: default[0] }
+  
+  result
+
+# make (and export) parameter initializers (a, i, k)
+for key, value in Rate
+  koto.exports().insert key, |name, default...|
+    if default.size() > 0
+      make_param name, value, default[0]
+    else
+      make_param name, value
+
+export tests =
+  test_make_param: ||
+    param = make_param "test", Rate.k
+
+    assert_eq param.name, "test"
+    assert_eq param.rate, Rate.k
+    assert_eq param.get("default"), ()
+
+    param = make_param "test", Rate.k, 42
+    assert_eq param.default, 42
+
+  test_param_initializers: ||
+    param = a "test"
+
+    assert_eq param.name, "test"
+    assert_eq param.rate, Rate.a
+    assert_eq param.get("default"), ()
+
+    param = a "test", 42
+    assert_eq param.default, 42
+
+    param = k "test"
+    assert_eq param.rate, Rate.k
+
+    param = i "test"
+    assert_eq param.rate, Rate.i
