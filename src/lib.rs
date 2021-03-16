@@ -7,7 +7,7 @@
 //! [Ian Hobson](https://twitter.com/_hobson_), who previously worked at Ableton).
 //!
 //! Mosquito uses [Csound](https://csound.com) as a sound compiler and it's permissively licensed,
-//! allowing it to be used in proprietary software. It can be either used on it's own or embedded
+//! allowing it to be used in proprietary software. It can be either used on its own or embedded
 //! into your application. Notice though, that Csound is linked dynamically.
 
 #![deny(

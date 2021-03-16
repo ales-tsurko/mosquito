@@ -11,7 +11,7 @@ for audio live coding and stuff in mind (in fact, the author of Koto is
 
 **Mosquito** uses [Csound](https://csound.com) as a sound compiler and it's
 permissively licensed, allowing it to be used in proprietary software. It can be
-either used on it's own or embedded into your application. Notice though, that
+either used on its own or embedded into your application. Notice though, that
 Csound is linked dynamically.
 
 
